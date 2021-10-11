@@ -1,6 +1,6 @@
-# Discord Interactions Worker - Typescript edition
+# InspiroBot-Bot (lol)
 
-A simple kickstart for [Discord slash commands (interactions)](https://discord.com/developers/docs/interactions/slash-commands) with [Cloudflare Workers](https://workers.cloudflare.com/)
+A Discord bot for getting InspiroBot quotes, using Cloudflare workers.
 
 ## Setup
 
