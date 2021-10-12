@@ -1,5 +1,11 @@
 import { verify } from './verify'
-import { InteractionType, InteractionResponseType, APIInteractionResponse, RESTPostAPIChannelInviteJSONBody, APIInvite, ApplicationCommandOptionType, ChannelType, MessageFlags, APIApplicationCommandInteraction, InviteTargetType, RouteBases, Routes } from 'discord-api-types/v9'
+import { getInspiroBotData } from "./inspirobot";
+import {
+  InteractionType,
+  InteractionResponseType,
+  APIInteractionResponse,
+  APIApplicationCommandInteraction as Interaction
+} from 'discord-api-types/v9'
 import { APIPingInteraction } from 'discord-api-types/payloads/v9/_interactions/ping'
 
 // The actual bot //
@@ -15,7 +21,23 @@ export async function handleRequest(request: Request): Promise<Response> {
       type: InteractionResponseType.Pong
     })
 
-  return respond('Hello from Cloudflare workers!')
+  return handleCommand(interaction)
+}
+
+async function handleCommand(_interaction: Interaction): Promise<Response> {
+  let data = await getInspiroBotData()
+
+  let message = `
+    ${data.image}\n
+    [create shirt](${data.zazzle.shirt})\n
+    [create poster](${data.zazzle.poster})\n
+    [create mug](${data.zazzle.mug})\n
+    [create sticker](${data.zazzle.sticker})\n
+    [create print](${data.zazzle.print})\n
+    [create mask](${data.zazzle.mask})\n
+  `
+
+  return respond(message)
 }
 
 // Utility stuff //
