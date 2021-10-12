@@ -2,12 +2,12 @@ import { verify } from './verify'
 import { getInspiroBotData } from "./inspirobot";
 
 import {
-  InteractionType,
-  InteractionResponseType,
-  APIInteractionResponse as InteractionResponse,
   APIApplicationCommandInteraction as Interaction,
   APIApplicationCommandInteractionData as InteractionData,
-  ApplicationCommandOptionType
+  APIInteractionResponse as InteractionResponse,
+  APIEmbed as Embed,
+  InteractionType,
+  InteractionResponseType,
 } from 'discord-api-types/v9'
 
 import { APIPingInteraction } from 'discord-api-types/payloads/v9/_interactions/ping'
@@ -32,15 +32,23 @@ async function invite(_command: InteractionData) {
 async function inspireMe(_command: InteractionData): Promise<Response> {
   let data = await getInspiroBotData()
 
-  let message = `${data.image}\n` +
-      `[create shirt](${data.zazzle.shirt})\n` +
-      `[create poster](${data.zazzle.poster})\n` +
-      `[create mug](${data.zazzle.mug})\n` +
-      `[create sticker](${data.zazzle.sticker})\n` +
-      `[create print](${data.zazzle.print})\n` +
-      `[create mask](${data.zazzle.mask})\n`
+  let desc = `**Buy Merch:**\n` +
+      `[shirt](${data.zazzle.shirt}) ` +
+      `[poster](${data.zazzle.poster}) ` +
+      `[mug](${data.zazzle.mug}) ` +
+      `[sticker](${data.zazzle.sticker}) ` +
+      `[print](${data.zazzle.print}) ` +
+      `[mask](${data.zazzle.mask}) `
 
-  return respond(message)
+  let content = "Here's your new InspiroBot quote!"
+
+  let embed: Embed = {
+    description: desc,
+    color: 0xffffff,
+    image: {url: data.image},
+  }
+
+  return respondEmbed(content, embed)
 }
 
 
@@ -75,6 +83,15 @@ async function respondToCommand(command: InteractionData) {
 
 
 // Utility stuff //
+
+async function respondEmbed(content: string, embed: Embed): Promise<Response> {
+  return respondComplex({
+    type: InteractionResponseType.ChannelMessageWithSource,
+    data: {
+      embeds: [embed]
+    }
+  })
+}
 
 async function respond(content: string): Promise<Response> {
   return respondComplex({
