@@ -23,7 +23,7 @@ const commands = [
 ]
 
 async function invite(_command: InteractionData) {
-  return respondEphemeral(
+  return respond(
       '[Invite me to your server!](https://discord.com/api/oauth2/authorize' +
       '?client_id=897275931436138546&scope=applications.commands)'
   )
