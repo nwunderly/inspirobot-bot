@@ -2,7 +2,7 @@
 
 'use strict';
 
-const publicKey = ''
+const publicKey = '1ff3d1ad145d869b6c9f81c5b26b8592f9e5ff23794ea324f7f38cb77fd3c886'
 
 function hex2bin(hex: string) {
   const buf = new Uint8Array(Math.ceil(hex.length / 2));

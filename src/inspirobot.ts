@@ -37,12 +37,13 @@ class InspiroBotImage {
 }
 
 function getZazzleApiUrls(imageUrl: string): Zazzle {
-    let shirt = apiShirt + imageUrl
-    let poster = apiPoster + imageUrl
-    let mug = apiMug + imageUrl
-    let sticker = apiSticker + imageUrl
-    let print = apiPrint + imageUrl
-    let mask = apiMask + imageUrl
+    let imageUrl2 = imageUrl.replace(".jpg", "hd.jpg")
+    let shirt = apiShirt + imageUrl2
+    let poster = apiPoster + imageUrl2
+    let mug = apiMug + imageUrl2
+    let sticker = apiSticker + imageUrl2
+    let print = apiPrint + imageUrl2
+    let mask = apiMask + imageUrl2
 
     return new Zazzle(shirt, poster, mug, sticker, print, mask)
 }

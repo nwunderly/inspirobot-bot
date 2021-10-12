@@ -2,6 +2,8 @@
 
 A Discord bot for getting InspiroBot quotes, using Cloudflare workers.
 
+[Add the bot!](https://discord.com/api/oauth2/authorize?client_id=897275931436138546&scope=applications.commands)
+
 ## Setup
 
 1. Make an application on [Discord's developer portal](https://discord.com/developers/applications)
