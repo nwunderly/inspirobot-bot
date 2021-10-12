@@ -33,11 +33,10 @@ async function inspireMe(_command: InteractionData): Promise<Response> {
   let data = await getInspiroBotData()
 
   let desc = `**Buy Merch:**\n` +
-      `[shirt](${data.zazzle.shirt}) ` +
-      `[poster](${data.zazzle.poster}) ` +
-      `[mug](${data.zazzle.mug}) ` +
-      `[sticker](${data.zazzle.sticker}) ` +
-      `[print](${data.zazzle.print}) ` +
+      `[shirt](${data.zazzle.shirt}) | ` +
+      `[poster](${data.zazzle.poster}) | ` +
+      `[mug](${data.zazzle.mug}) | ` +
+      `[sticker](${data.zazzle.sticker}) | ` +
       `[mask](${data.zazzle.mask}) `
 
   let content = "Here's your new InspiroBot quote!"
@@ -88,6 +87,7 @@ async function respondEmbed(content: string, embed: Embed): Promise<Response> {
   return respondComplex({
     type: InteractionResponseType.ChannelMessageWithSource,
     data: {
+      content: content,
       embeds: [embed]
     }
   })
