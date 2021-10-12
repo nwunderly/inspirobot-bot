@@ -37,7 +37,8 @@ async function inspireMe(_command: InteractionData): Promise<Response> {
       `[poster](${data.zazzle.poster}) | ` +
       `[mug](${data.zazzle.mug}) | ` +
       `[sticker](${data.zazzle.sticker}) | ` +
-      `[mask](${data.zazzle.mask}) `
+      `[mask](${data.zazzle.mask})\n` +
+      `(merch sold by the official [InspiroBot](https://inspirobot.me/) project)`
 
   let content = "Here's your new InspiroBot quote!"
 
